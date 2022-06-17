@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     static int oneInt;
-    static String operate;
+    static String operate, operate2;
     static int twoInt;
     static String rim1, rim2;
 
@@ -11,6 +11,9 @@ public class Main {
         while (true) {
             scanString();
             if ((rim1 != null || rim2 != null) && (oneInt != 0 || twoInt != 0)) {
+                throw new Exception();
+            }
+            if ((operate2.equals("+") || operate2.equals("-")) || (operate2.equals("/") || operate2.equals("*"))) {
                 throw new Exception();
             }
             if (rim1 == null && rim2 == null) {
@@ -35,6 +38,12 @@ public class Main {
         if (scanLine.hasNextInt()){
             twoInt = scanLine.nextInt();
         } else rim2 = scanLine.next();
+        if (scanLine.hasNext()) operate2 = scanLine.next();
+        else operate2 = "";
+        if (((oneInt < 1 || oneInt > 10) || (twoInt < 1 || twoInt > 10))
+            && (resultRim(rim1) < 1 || resultRim(rim2) < 1)) {
+            throw new Exception();
+        }
     }
 
     public static void scanInt (String str){
